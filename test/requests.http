@@ -1,0 +1,27 @@
+### GET / 
+GET http://127.0.0.1:3000/
+
+### GET /items
+GET http://127.0.0.1:3000/items
+
+### GET /items/:id
+GET http://127.0.0.1:3000/items/5
+
+### POST /items
+POST http://127.0.0.1:3000/items
+content-type: application/json
+
+{"name": "viikuna"}
+
+### POST /items error
+POST http://127.0.0.1:3000/items
+
+{"höpö": "höpö"}
+
+### PUT /items/:id
+PUT http://127.0.0.1:3000/items/6
+
+{"name": "päärynä"}
+
+### DELETE /items/:id
+DELETE http://127.0.0.1:3000/items/6
