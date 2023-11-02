@@ -6,10 +6,30 @@ html(lang="en")
     title= title
   body
     h1= title
-    p Welcome to my server!
-    p= message
     // TODO: provide some information about your API, use dynamic content rendering
-    p This is a simple API server for the course "Web Engineering 2" at the University of Applied Sciences in Salzburg.
+    p This is a simple API server for the course "UCAD", which uses the following technologies:
     p It is based on Node.js and Express.js.
+    p This webpage is rendered using Pug.
     p The server is running on port 3000.
+    br
     p The following routes are available:
+    h3 General 
+    ul 
+      li GET http://127.0.0.1:3000/
+    h3 Media
+    ul 
+      li GET http://127.0.0.1:3000/api/media
+      li GET http://127.0.0.1:3000/api/media/9632
+      li POST http://127.0.0.1:3000/api/media
+      li POST http://127.0.0.1:3000/api/media
+      li PUT http://127.0.0.1:3000/api/media/0
+      li DELETE http://127.0.0.1:3000/api/media/0
+
+    h3 Users 
+    ul
+      li GET http://127.0.0.1:3000/api/user
+      li GET http://127.0.0.1:3000/api/user/260
+      li POST http://127.0.0.1:3000/api/user
+      li POST http://127.0.0.1:3000/api/user
+      li PUT http://127.0.0.1:3000/api/user/0
+      li DELETE http://127.0.0.1:3000/api/user/0

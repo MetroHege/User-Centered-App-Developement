@@ -49,13 +49,13 @@ DELETE http://127.0.0.1:3000/api/media/0
 
 GET http://127.0.0.1:3000/
 
-### GET /items
+### GET /users
 GET http://127.0.0.1:3000/api/user
 
-### GET /items/:id
+### GET /users/:id
 GET http://127.0.0.1:3000/api/user/260
 
-### POST /items
+### POST /user
 POST http://127.0.0.1:3000/api/user
 content-type: application/json
 
@@ -68,12 +68,12 @@ content-type: application/json
     "created_at": "2023-04-02T05:56:41.000Z"
   }
 
-### POST /items error
+### POST /user error
 POST http://127.0.0.1:3000/api/user
 
 {"höpö": "höpö"}
 
-### PUT /items/:id
+### PUT /users/:id
 PUT http://127.0.0.1:3000/api/user/0
 content-type: application/json
 
@@ -86,5 +86,5 @@ content-type: application/json
     "created_at": "2023-04-02T05:56:41.000Z"
   }
 
-### DELETE /items/:id
+### DELETE /users/:id
 DELETE http://127.0.0.1:3000/api/user/0
