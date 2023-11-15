@@ -1,27 +1,94 @@
 ### GET / 
 GET http://127.0.0.1:3000/
 
-### GET /items
-GET http://127.0.0.1:3000/items
+### GET /medias
+GET http://127.0.0.1:3000/api/media
 
-### GET /items/:id
-GET http://127.0.0.1:3000/items/5
+### GET /media/:id
+GET http://127.0.0.1:3000/api/media/9632
 
-### POST /items
-POST http://127.0.0.1:3000/items
-content-type: application/json
+### POST /media
+POST http://127.0.0.1:3000/api/media
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
-{"name": "viikuna"}
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="title"
 
-### POST /items error
-POST http://127.0.0.1:3000/items
+New media title
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="user_id"
+
+1
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="image.jpg"
+Content-Type: image/jpeg
+
+< ./image.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### POST /media error
+POST http://127.0.0.1:3000/api/media
 
 {"höpö": "höpö"}
 
-### PUT /items/:id
-PUT http://127.0.0.1:3000/items/6
+### PUT /medias/:id
+PUT http://127.0.0.1:3000/api/media/0
+content-type: application/json
 
-{"name": "päärynä"}
+  {
+    "media_id": 0,
+    "filename": "updated.jpg",
+    "filesize": 239,
+    "title": "updated",
+    "description": "updated",
+    "user_id": 307655,
+    "media_type": "image/jpeg",
+    "created_at": "2018-10-12T06:56:41.000Z"
+  }
 
-### DELETE /items/:id
-DELETE http://127.0.0.1:3000/items/6
+### DELETE /media/:id
+DELETE http://127.0.0.1:3000/api/media/0
+
+// -----------------------User-----------------------
+
+GET http://127.0.0.1:3000/
+
+### GET /users
+GET http://127.0.0.1:3000/api/user
+
+### GET /users/:id
+GET http://127.0.0.1:3000/api/user/260
+
+### POST /user
+POST http://127.0.0.1:3000/api/user
+content-type: application/json
+
+  {
+    "user_id": 3609362,
+    "username": "TESTIKÄYTTÄJÄ",
+    "password": "********",
+    "email": "TESTIKÄYTTÄJÄ@example.com",
+    "user_level_id": 3,
+    "created_at": "2023-04-02T05:56:41.000Z"
+  }
+
+### POST /user error
+POST http://127.0.0.1:3000/api/user
+
+{"höpö": "höpö"}
+
+### PUT /users/:id
+PUT http://127.0.0.1:3000/api/user/0
+content-type: application/json
+
+  {
+    "user_id": 3609362,
+    "username": "updated",
+    "password": "********",
+    "email": "updated@example.com",
+    "user_level_id": 3,
+    "created_at": "2023-04-02T05:56:41.000Z"
+  }
+
+### DELETE /users/:id
+DELETE http://127.0.0.1:3000/api/user/0
