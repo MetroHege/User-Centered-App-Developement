@@ -5,7 +5,7 @@ GET http://127.0.0.1:3000/
 GET http://127.0.0.1:3000/api/media
 
 ### GET /media/:id
-GET http://127.0.0.1:3000/api/media/9632
+GET http://127.0.0.1:3000/api/media/8
 
 ### POST /media
 POST http://127.0.0.1:3000/api/media
@@ -15,6 +15,12 @@ Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0g
 Content-Disposition: form-data; name="title"
 
 New media title
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="description"
+
+New media description
+
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="user_id"
 
@@ -31,23 +37,21 @@ POST http://127.0.0.1:3000/api/media
 
 {"höpö": "höpö"}
 
-### PUT /medias/:id
-PUT http://127.0.0.1:3000/api/media/0
+### PUT /media/:id
+PUT http://127.0.0.1:3000/api/media/8
 content-type: application/json
 
   {
-    "media_id": 0,
+    "user_id": 8,
     "filename": "updated.jpg",
-    "filesize": 239,
+    "size": 123456,
     "title": "updated",
     "description": "updated",
-    "user_id": 307655,
-    "media_type": "image/jpeg",
-    "created_at": "2018-10-12T06:56:41.000Z"
+    "mimetype": 1
   }
 
 ### DELETE /media/:id
-DELETE http://127.0.0.1:3000/api/media/0
+DELETE http://127.0.0.1:3000/api/media/6
 
 // -----------------------User-----------------------
 
@@ -57,7 +61,7 @@ GET http://127.0.0.1:3000/
 GET http://127.0.0.1:3000/api/user
 
 ### GET /users/:id
-GET http://127.0.0.1:3000/api/user/260
+GET http://127.0.0.1:3000/api/user/2
 
 ### POST /user
 POST http://127.0.0.1:3000/api/user
@@ -78,17 +82,17 @@ POST http://127.0.0.1:3000/api/user
 {"höpö": "höpö"}
 
 ### PUT /users/:id
-PUT http://127.0.0.1:3000/api/user/0
+PUT http://127.0.0.1:3000/api/user/6
 content-type: application/json
 
   {
     "user_id": 3609362,
-    "username": "updated",
+    "username": "uppis",
     "password": "********",
-    "email": "updated@example.com",
+    "email": "update@example.com",
     "user_level_id": 3,
     "created_at": "2023-04-02T05:56:41.000Z"
   }
 
 ### DELETE /users/:id
-DELETE http://127.0.0.1:3000/api/user/0
+DELETE http://127.0.0.1:3000/api/user/8

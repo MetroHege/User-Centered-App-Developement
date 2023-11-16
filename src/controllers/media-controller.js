@@ -1,70 +1,15 @@
-const items = [
-  {
-    media_id: 9632,
-    filename: "ffd8.jpg",
-    filesize: 887574,
-    title: "Favorite drink",
-    description: "",
-    user_id: 1606,
-    media_type: "image/jpeg",
-    created_at: "2023-10-16T19:00:09.000Z",
-  },
-  {
-    media_id: 9626,
-    filename: "dbbd.jpg",
-    filesize: 60703,
-    title: "Miika",
-    description: "My Photo",
-    user_id: 3671,
-    media_type: "image/jpeg",
-    created_at: "2023-10-13T12:14:26.000Z",
-  },
-  {
-    media_id: 9625,
-    filename: "2f9b.jpg",
-    filesize: 30635,
-    title: "Aksux",
-    description: "friends",
-    user_id: 260,
-    media_type: "image/jpeg",
-    created_at: "2023-10-12T20:03:08.000Z",
-  },
-  {
-    media_id: 9592,
-    filename: "f504.jpg",
-    filesize: 48975,
-    title: "Desert",
-    description: "",
-    user_id: 3609,
-    media_type: "image/jpeg",
-    created_at: "2023-10-12T06:59:05.000Z",
-  },
-  {
-    media_id: 9590,
-    filename: "60ac.jpg",
-    filesize: 23829,
-    title: "Basement",
-    description: "Light setup in basement",
-    user_id: 305,
-    media_type: "image/jpeg",
-    created_at: "2023-10-12T06:56:41.000Z",
-  },
-];
+import {
+  addMedia,
+  fetchAllMedia,
+  fetchMediaById,
+  updateMediaById,
+  deleteMediaById,
+} from "../models/media-model.mjs";
 
-/**
- *
- * @param {*} req
- * @param {*} res
- */
-
-const getItems = (req, res) => {
+const getItems = async (req, res) => {
   const limit = req.query.limit;
-  // TODO: check that the param value is int before using it
-  if (limit) {
-    res.json(items.slice(0, limit));
-  } else {
-    res.json(items);
-  }
+  const mediaItems = await fetchAllMedia();
+  res.json(mediaItems);
 };
 
 /**
@@ -73,15 +18,18 @@ const getItems = (req, res) => {
  * @param {*} res
  */
 
-const getItemsById = (req, res) => {
-  // TODO: if item whit id exists send it, otherwise send 404
+const getItemsById = async (req, res) => {
   console.log("getItemsById", req.params);
-  const item = items.find((element) => element.media_id == req.params.id);
-  if (item) {
-    res.json(item);
+  const result = await fetchMediaById(req.params.id);
+
+  if (result) {
+    if (result.error) {
+      res.status(500);
+    }
+    res.json(result);
   } else {
     res.status(404);
-    res.json({ message: "Item not found" });
+    res.json({ error: "Item not found.", media_id: req.params.id });
   }
 };
 
@@ -91,25 +39,16 @@ const getItemsById = (req, res) => {
  * @param {*} res
  */
 
-// TODO: create postItem function, it creates a new item and adds it to items
-const postItem = (req, res) => {
+const postItem = async (req, res) => {
   console.log("uploaded file", req.file);
   console.log("uploaded form data", req.body);
   const { title, description, user_id } = req.body;
   const { filename, mimetype, size } = req.file;
-  const newId = mediaItems[0].media_id + 1;
   if (filename && title && user_id) {
-    mediaItems.unshift({
-      media_id: newId,
-      filename,
-      title,
-      description,
-      user_id,
-      media_type: mimetype,
-      filesize: size,
-    });
+    const newMedia = { title, description, user_id, filename, mimetype, size };
+    const result = await addMedia(newMedia);
     res.status(201);
-    res.json({ message: "New media item added.", media_id: newId });
+    res.json({ message: "New media item added.", ...result });
   } else {
     res.sendStatus(400);
   }
@@ -121,40 +60,33 @@ const postItem = (req, res) => {
  * @param {*} res
  */
 
-// TODO: create putItem function, it gets media_id and the updates it
-const putItem = (req, res) => {
-  const item = items.find((element) => element.media_id == req.params.id);
-  if (item) {
-    items.splice(items.indexOf(item), 1, {
-      media_id: item.media_id,
-      filename: req.body.filename,
-      filesize: req.body.filesize,
-      title: req.body.title,
-      description: req.body.description,
-      user_id: req.body.user_id,
-      media_type: req.body.media_type,
-      created_at: req.body.created_at,
-    });
-    res.sendStatus(200);
+const putItem = async (req, res) => {
+  console.log("Item updated", req.params);
+  const result = await updateMediaById(req.params.id, req.body);
+
+  if (result) {
+    if (result.error) {
+      res.status(500);
+    }
+    res.json(result);
   } else {
-    res.sendStatus(404);
+    res.status(404);
+    res.json({ error: "Item not found.", media_id: req.params.id });
   }
 };
 
-/**
- *
- * @param {*} req
- * @param {*} res
- */
+const deleteItem = async (req, res) => {
+  console.log("Item deleted", req.params);
+  const result = await deleteMediaById(req.params.id);
 
-// TODO: create deleteItem function, it should delete existing item with id
-const deleteItem = (req, res) => {
-  const item = items.find((element) => element.media_id == req.params.id);
-  if (item) {
-    items.splice(items.indexOf(item), 1);
-    res.sendStatus(200);
+  if (result) {
+    if (result.error) {
+      res.status(500);
+    }
+    res.json(result);
   } else {
-    res.sendStatus(404);
+    res.status(404);
+    res.json({ error: "Item not found.", media_id: req.params.id });
   }
 };
 
