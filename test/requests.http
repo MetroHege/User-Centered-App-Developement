@@ -29,7 +29,7 @@ Content-Disposition: form-data; name="user_id"
 Content-Disposition: form-data; name="file"; filename="image.jpg"
 Content-Type: image/jpeg
 
-< ./image.jpg
+ ./image.jpg
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
 
 ### POST /media error
@@ -38,7 +38,7 @@ POST http://127.0.0.1:3000/api/media
 {"höpö": "höpö"}
 
 ### PUT /media/:id
-PUT http://127.0.0.1:3000/api/media/8
+PUT http://127.0.0.1:3000/api/media/1
 content-type: application/json
 
   {
@@ -51,7 +51,7 @@ content-type: application/json
   }
 
 ### DELETE /media/:id
-DELETE http://127.0.0.1:3000/api/media/6
+DELETE http://127.0.0.1:3000/api/media/14
 
 // -----------------------User-----------------------
 
@@ -69,10 +69,10 @@ content-type: application/json
 
   {
     "user_id": 3609362,
-    "username": "TESTIKÄYTTÄJÄ",
+    "username": "toimiiko",
     "password": "********",
-    "email": "TESTIKÄYTTÄJÄ@example.com",
-    "user_level_id": 3,
+    "email": "toimiihan@pliis.com",
+    "user_level_id": 1,
     "created_at": "2023-04-02T05:56:41.000Z"
   }
 
@@ -87,12 +87,12 @@ content-type: application/json
 
   {
     "user_id": 3609362,
-    "username": "uppis",
+    "username": "upis",
     "password": "********",
-    "email": "update@example.com",
+    "email": "upde@example.com",
     "user_level_id": 3,
     "created_at": "2023-04-02T05:56:41.000Z"
   }
 
 ### DELETE /users/:id
-DELETE http://127.0.0.1:3000/api/user/8
+DELETE http://127.0.0.1:3000/api/user/7
