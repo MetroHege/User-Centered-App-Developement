@@ -4,6 +4,7 @@ import { fileURLToPath } from "url";
 import userRouter from "./routers/user-routers.mjs";
 import mediaRouter from "./routers/media-routers.mjs";
 import logger from "./middlewares/middlewares.mjs";
+import authRouter from "./routers/auth-router.mjs";
 
 const hostname = "127.0.0.1";
 const app = express();
@@ -20,6 +21,8 @@ app.use("/docs", express.static(path.join(__dirname, "../docs")));
 // serve uploaded media files url: /media({file})
 app.use("/media", express.static(path.join(__dirname, "../uploads")));
 
+const teamSetting = "dark";
+
 // simple custom middleware logging/debugging all requests
 app.use(logger);
 
@@ -30,6 +33,9 @@ app.get("/", (req, res) => {
   };
   res.render("home", values);
 });
+
+// auth endpoints
+app.use("/api/auth", authRouter);
 
 // media endpoints
 app.use("/api/media", mediaRouter);
