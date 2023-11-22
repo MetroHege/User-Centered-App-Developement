@@ -22,6 +22,10 @@ mediaRouter
   .get(getItems)
   .post(authenticateToken, upload.single("file"), postItem);
 
-mediaRouter.route("/:id").get(getItemsById).put(putItem).delete(deleteItem);
+mediaRouter
+  .route("/:id")
+  .get(getItemsById)
+  .put(authenticateToken, putItem)
+  .delete(authenticateToken, deleteItem);
 
 export default mediaRouter;

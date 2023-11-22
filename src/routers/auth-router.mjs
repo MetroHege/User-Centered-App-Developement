@@ -7,5 +7,6 @@ const authRouter = express.Router();
 // routes for /api/auth
 authRouter.route("/login").post(postLogin);
 authRouter.route("/me").get(authenticateToken, getMe);
+// authRouter.route("/media/:id").put().delete();
 
 export default authRouter;

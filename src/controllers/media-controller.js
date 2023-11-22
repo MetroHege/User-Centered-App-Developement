@@ -56,12 +56,6 @@ const postItem = async (req, res) => {
   }
 };
 
-/**
- *
- * @param {*} req
- * @param {*} res
- */
-
 const putItem = async (req, res) => {
   console.log("Item updated", req.params);
   const result = await updateMediaById(req.params.id, req.body);
