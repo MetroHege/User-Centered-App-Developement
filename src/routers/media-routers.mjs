@@ -8,6 +8,7 @@ import {
   putItem,
 } from "../controllers/media-controller.js";
 import logger from "../middlewares/middlewares.mjs";
+import { authenticateToken } from "../middlewares/authentication.mjs";
 
 const mediaRouter = express.Router();
 const upload = multer({ dest: "uploads/" });
@@ -15,7 +16,11 @@ const upload = multer({ dest: "uploads/" });
 // router specific middleware
 // mediaRouter.use(logger);
 
-mediaRouter.route("/").get(getItems).post(upload.single("file"), postItem);
+// TODO: check and add authentication where needed
+mediaRouter
+  .route("/")
+  .get(getItems)
+  .post(authenticateToken, upload.single("file"), postItem);
 
 mediaRouter.route("/:id").get(getItemsById).put(putItem).delete(deleteItem);
 
