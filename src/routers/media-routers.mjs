@@ -1,5 +1,4 @@
 import express from "express";
-import multer from "multer";
 import {
   deleteItem,
   getItems,
@@ -7,11 +6,11 @@ import {
   postItem,
   putItem,
 } from "../controllers/media-controller.js";
-import logger from "../middlewares/middlewares.mjs";
 import { authenticateToken } from "../middlewares/authentication.mjs";
+import { body } from "express-validator";
+import upload from "../middlewares/upload.mjs";
 
 const mediaRouter = express.Router();
-const upload = multer({ dest: "uploads/" });
 
 // router specific middleware
 // mediaRouter.use(logger);
@@ -20,7 +19,15 @@ const upload = multer({ dest: "uploads/" });
 mediaRouter
   .route("/")
   .get(getItems)
-  .post(authenticateToken, upload.single("file"), postItem);
+  .post(
+    authenticateToken,
+    upload.single("file"),
+
+    // TODO: add missing validation rules
+    body("title").trim().isLength({ min: 3 }),
+    body("description"),
+    postItem
+  );
 
 mediaRouter
   .route("/:id")

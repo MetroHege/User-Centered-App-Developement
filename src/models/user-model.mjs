@@ -44,15 +44,21 @@ const fetchUserById = async (id) => {
   }
 };
 
+/**
+ * Creates a new user in the database
+ *
+ * @param {object} user data
+ * @returns {number} - id of the inserted user in db
+ */
+
 const addUser = async (user) => {
-  const { username, email, password } = user;
-  const sql = `INSERT INTO users (username, email, password)
-                     VALUES (?, ?, ?)`;
-  const params = [username, email, password];
   try {
+    const sql = `INSERT INTO Users (username, email, password, user_level_id)
+                VALUES (?, ?, ?, ?)`;
+    // user level id defaults to 2 (normal user)
+    const params = [user.username, user.email, user.password, 2];
     const result = await promisePool.query(sql, params);
-    console.log("rows", result);
-    return { user_id: result[0].insertId };
+    return result[0].insertId;
   } catch (e) {
     console.error("error", e.message);
     return { error: e.message };
@@ -66,7 +72,7 @@ const updateUserById = async (id, user) => {
   try {
     const result = await promisePool.query(sql, params);
     console.log("rows", result);
-    return { user_id: result[0].insertId };
+    return { message: "User updated" };
   } catch (e) {
     console.error("error", e.message);
     return { error: e.message };
@@ -79,7 +85,7 @@ const deleteUserById = async (id) => {
   try {
     const result = await promisePool.query(sql, params);
     console.log("rows", result);
-    return { user_id: result[0].insertId };
+    return { message: "User deleted" };
   } catch (e) {
     console.error("error", e.message);
     return { error: e.message };

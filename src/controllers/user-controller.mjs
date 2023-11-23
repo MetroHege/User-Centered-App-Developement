@@ -1,3 +1,4 @@
+import { validationResult } from "express-validator";
 import {
   fetchAllUsers,
   fetchUserById,
@@ -46,18 +47,14 @@ const getUsersById = async (req, res) => {
  */
 
 const postUser = async (req, res) => {
-  console.log("Created user", req.body);
-  console.log("", req.body);
-  const { username, email, password } = req.body;
-  const { user_id, user_level_id } = req.params;
-  if (username && email && password) {
-    const newUser = { username, email, password, user_id, user_level_id };
-    const result = await addUser(newUser);
-    res.status(201);
-    res.json({ message: "New user added.", ...result });
-  } else {
-    res.sendStatus(400);
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    // details about errors are in errors.array()
+    console.log(errors.array());
+    return res.status(400).json({ message: "Validation failed" });
   }
+  const newUserId = await addUser(req.body);
+  res.status(201).json({ message: "New user added.", user_id: newUserId });
 };
 
 /**
@@ -87,7 +84,7 @@ const putUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
   console.log("User deleted", req.params);
-  const result = await deleteUser("User deleted", req.params.id);
+  const result = await deleteUserById("User deleted", req.params.id);
   if (result) {
     if (result.error) {
       res.status(500);

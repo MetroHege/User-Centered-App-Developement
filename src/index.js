@@ -3,7 +3,11 @@ import path from "path";
 import { fileURLToPath } from "url";
 import userRouter from "./routers/user-routers.mjs";
 import mediaRouter from "./routers/media-routers.mjs";
-import logger from "./middlewares/middlewares.mjs";
+import {
+  logger,
+  notFoundHandler,
+  errorHandler,
+} from "./middlewares/middlewares.mjs";
 import authRouter from "./routers/auth-router.mjs";
 
 const hostname = "127.0.0.1";
@@ -42,6 +46,18 @@ app.use("/api/media", mediaRouter);
 
 // user endpoints
 app.use("/api/user", userRouter);
+
+// 404 & error handler
+app.use(notFoundHandler);
+app.use(errorHandler);
+
+// app.use((req, res, next) => {
+//   res.sendStatus(404);
+// });
+
+// app.use((err, req, res, next) => {
+//   res.status(500).json({ message: "Something went wrong" });
+// });
 
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);

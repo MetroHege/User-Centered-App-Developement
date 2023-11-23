@@ -32,7 +32,7 @@ const addMedia = async (media) => {
   try {
     const result = await promisePool.query(sql, params);
     console.log("rows", result);
-    return { media_id: result[0].insertId };
+    return { message: "Media added" };
   } catch (e) {
     console.error("error", e.message);
     return { error: e.message };
@@ -46,7 +46,7 @@ const updateMediaById = async (id, media) => {
   try {
     const result = await promisePool.query(sql, params);
     console.log("rows", result);
-    return { media_id: result[0].insertId };
+    return { message: "Media updated" };
   } catch (e) {
     console.error("error", e.message);
     return { error: e.message };
@@ -59,7 +59,7 @@ const deleteMediaById = async (id) => {
   try {
     const result = await promisePool.query(sql, params);
     console.log("rows", result);
-    return { media_id: result[0].insertId };
+    return { message: "Media deleted", media_id: result[0].insertId };
   } catch (e) {
     console.error("error", e.message);
     return { error: e.message };

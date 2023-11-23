@@ -23,7 +23,7 @@ GET http://127.0.0.1:3000/api/media/8
 
 ### POST /media
 POST http://127.0.0.1:3000/api/media
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IkpvaG5Eb2UiLCJlbWFpbCI6ImpvaG5kb2VAZXhhbXBsZS5jb20iLCJ1c2VyX2xldmVsX2lkIjoyLCJpYXQiOjE3MDA2NDUxMDN9.FK9V6YOw8BOYjiRW2R6irkb3S0NM3X5gdwB5sKRv61U
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IkpvaG5Eb2UiLCJlbWFpbCI6ImpvaG5kb2VAZXhhbXBsZS5jb20iLCJ1c2VyX2xldmVsX2lkIjoyLCJpYXQiOjE3MDA2NDU0ODh9.gNZq5Qw8t7hZ1UM1-ffqe9oiXkVxfRUYxYjaNtt-fA0
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
@@ -54,7 +54,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c
 content-type: application/json
 
   {
-    "user_id": 8,
     "filename": "updated.jpg",
     "size": 123456,
     "title": "updated",
@@ -81,10 +80,9 @@ POST http://127.0.0.1:3000/api/user
 content-type: application/json
 
   {
-    "user_id": 3609362,
-    "username": "toimiiko",
+    "username": "toj",
     "password": "********",
-    "email": "toimiihan@pliis.com",
+    "email": "toi@pliis.com",
     "user_level_id": 1,
     "created_at": "2023-04-02T05:56:41.000Z"
   }
@@ -100,7 +98,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c
 content-type: application/json
 
   {
-    "user_id": 3609362,
     "username": "testi",
     "password": "*******",
     "email": "testitit@example.com",
