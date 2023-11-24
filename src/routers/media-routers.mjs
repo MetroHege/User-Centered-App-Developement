@@ -25,14 +25,20 @@ mediaRouter
 
     // TODO: add missing validation rules
     body("title").trim().isLength({ min: 3 }),
-    body("description"),
+    body("description").isLength({ max: 255 }),
     postItem
   );
 
 mediaRouter
   .route("/:id")
   .get(getItemsById)
-  .put(authenticateToken, putItem)
+  .put(
+    authenticateToken,
+    body("title").trim().isLength({ min: 3 }),
+    putItem,
+    body("description").isLength({ max: 255 }),
+    putItem
+  )
   .delete(authenticateToken, deleteItem);
 
 export default mediaRouter;

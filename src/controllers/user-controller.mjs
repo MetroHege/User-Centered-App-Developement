@@ -64,16 +64,22 @@ const postUser = async (req, res) => {
  */
 
 const putUser = async (req, res) => {
-  const result = await updateUserById(req.params.id, req.body);
-  if (result) {
-    if (result.error) {
-      res.status(500);
-    }
-    res.json(result);
-  } else {
-    res.sendStatus(404);
-    res.json({ error: "User not found.", user_id: req.params.id });
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    // details about errors are in errors.array()
+    console.log(errors.array());
+    return res.status(400).json({ message: "Validation failed" });
   }
+  const result = await updateUserById(req.params.id, req.body);
+  // if (result) {
+  //   if (result.error) {
+  //     res.status(500);
+  //   }
+  //   res.json(result);
+  // } else {
+  //   res.sendStatus(404);
+  //   res.json({ error: "User not found.", user_id: req.params.id });
+  // }
 };
 
 /**

@@ -4,14 +4,13 @@ POST http://127.0.0.1:3000/api/auth/login
 content-type: application/json
 
 {
-    "username": "JohnDoe",
-    "password": "to-be-hashed-pw1"
+    "username": "JaneSmith",
+    "password": "to-be-hashed-pw2"
 }
 
 ### GET my user info
 GET http://127.0.0.1:3000/api/auth/me
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IkpvaG5Eb2UiLCJlbWFpbCI6ImpvaG5kb2VAZXhhbXBsZS5jb20iLCJ1c2VyX2xldmVsX2lkIjoyLCJpYXQiOjE3MDA2NDU0ODh9.gNZq5Qw8t7hZ1UM1-ffqe9oiXkVxfRUYxYjaNtt-fA0
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkphbmVTbWl0aCIsImVtYWlsIjoiamFuZXNtaXRoQGV4YW1wbGUuY29tIiwidXNlcl9sZXZlbF9pZCI6MiwiaWF0IjoxNzAwNzYwODczfQ.BbFUn2qaVgtJk7nksu1e3HfbdKWM3bOGJtHAKOYL6pU
 ### GET / 
 GET http://127.0.0.1:3000/
 
@@ -23,7 +22,7 @@ GET http://127.0.0.1:3000/api/media/8
 
 ### POST /media
 POST http://127.0.0.1:3000/api/media
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IkpvaG5Eb2UiLCJlbWFpbCI6ImpvaG5kb2VAZXhhbXBsZS5jb20iLCJ1c2VyX2xldmVsX2lkIjoyLCJpYXQiOjE3MDA2NDU0ODh9.gNZq5Qw8t7hZ1UM1-ffqe9oiXkVxfRUYxYjaNtt-fA0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkphbmVTbWl0aCIsImVtYWlsIjoiamFuZXNtaXRoQGV4YW1wbGUuY29tIiwidXNlcl9sZXZlbF9pZCI6MiwiaWF0IjoxNzAwNzYwODczfQ.BbFUn2qaVgtJk7nksu1e3HfbdKWM3bOGJtHAKOYL6pU
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
@@ -50,7 +49,7 @@ POST http://127.0.0.1:3000/api/media
 
 ### PUT /media/:id
 PUT http://127.0.0.1:3000/api/media/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IkpvaG5Eb2UiLCJlbWFpbCI6ImpvaG5kb2VAZXhhbXBsZS5jb20iLCJ1c2VyX2xldmVsX2lkIjoyLCJpYXQiOjE3MDA2NDUxMDN9.FK9V6YOw8BOYjiRW2R6irkb3S0NM3X5gdwB5sKRv61U
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkphbmVTbWl0aCIsImVtYWlsIjoiamFuZXNtaXRoQGV4YW1wbGUuY29tIiwidXNlcl9sZXZlbF9pZCI6MiwiaWF0IjoxNzAwNzYwODczfQ.BbFUn2qaVgtJk7nksu1e3HfbdKWM3bOGJtHAKOYL6pU
 content-type: application/json
 
   {
@@ -63,7 +62,7 @@ content-type: application/json
 
 ### DELETE /media/:id
 DELETE http://127.0.0.1:3000/api/media/15
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IkpvaG5Eb2UiLCJlbWFpbCI6ImpvaG5kb2VAZXhhbXBsZS5jb20iLCJ1c2VyX2xldmVsX2lkIjoyLCJpYXQiOjE3MDA2NDUxMDN9.FK9V6YOw8BOYjiRW2R6irkb3S0NM3X5gdwB5sKRv61U
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkphbmVTbWl0aCIsImVtYWlsIjoiamFuZXNtaXRoQGV4YW1wbGUuY29tIiwidXNlcl9sZXZlbF9pZCI6MiwiaWF0IjoxNzAwNzYwODczfQ.BbFUn2qaVgtJk7nksu1e3HfbdKWM3bOGJtHAKOYL6pU
 
 // -----------------------User-----------------------
 
@@ -80,9 +79,9 @@ POST http://127.0.0.1:3000/api/user
 content-type: application/json
 
   {
-    "username": "toj",
+    "username": "ojbaidfkn",
     "password": "********",
-    "email": "toi@pliis.com",
+    "email": "tosgdgi@pliis.com",
     "user_level_id": 1,
     "created_at": "2023-04-02T05:56:41.000Z"
   }
@@ -93,14 +92,14 @@ POST http://127.0.0.1:3000/api/user
 {"höpö": "höpö"}
 
 ### PUT /users/:id
-PUT http://127.0.0.1:3000/api/user/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IkpvaG5Eb2UiLCJlbWFpbCI6ImpvaG5kb2VAZXhhbXBsZS5jb20iLCJ1c2VyX2xldmVsX2lkIjoyLCJpYXQiOjE3MDA2NTMyNzl9.wBG_mB9kx40iMANZf1rqb3ylOQwFgPYCy-RwHhhFJtI
+PUT http://127.0.0.1:3000/api/user/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkphbmVTbWl0aCIsImVtYWlsIjoiamFuZXNtaXRoQGV4YW1wbGUuY29tIiwidXNlcl9sZXZlbF9pZCI6MiwiaWF0IjoxNzAwNzYwODczfQ.BbFUn2qaVgtJk7nksu1e3HfbdKWM3bOGJtHAKOYL6pU
 content-type: application/json
 
   {
-    "username": "testi",
-    "password": "*******",
-    "email": "testitit@example.com",
+    "username": "JaneSmith",
+    "password": "joniiisalsalsa",
+    "email": "testistit@example.com",
     "user_level_id": 3,
     "created_at": "2023-04-02T05:56:41.000Z"
   }
