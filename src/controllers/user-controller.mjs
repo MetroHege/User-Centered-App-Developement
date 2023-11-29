@@ -6,6 +6,7 @@ import {
   updateUserById,
   deleteUserById,
 } from "../models/user-model.mjs";
+import bcrypt from "bcryptjs";
 
 /**
  *
@@ -53,7 +54,12 @@ const postUser = async (req, res) => {
     console.log(errors.array());
     return res.status(400).json({ message: "Validation failed" });
   }
-  const newUserId = await addUser(req.body);
+  const newUser = req.body;
+  const salt = await bcrypt.genSalt(10);
+  // replace plain text password with hashed password
+  newUser.password = await bcrypt.hash(newUser.password, salt);
+  console.log("postUser", newUser);
+  const newUserId = await addUser(newUser);
   res.status(201).json({ message: "New user added.", user_id: newUserId });
 };
 

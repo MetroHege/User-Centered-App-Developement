@@ -4,8 +4,8 @@ POST http://127.0.0.1:3000/api/auth/login
 content-type: application/json
 
 {
-    "username": "JaneSmith",
-    "password": "to-be-hashed-pw2"
+    "username": "hashi2",
+    "password": "nytonsalasana"
 }
 
 ### GET my user info
@@ -79,9 +79,9 @@ POST http://127.0.0.1:3000/api/user
 content-type: application/json
 
   {
-    "username": "ojbaidfkn",
-    "password": "********",
-    "email": "tosgdgi@pliis.com",
+    "username": "hashi2",
+    "password": "nytonsalasana",
+    "email": "hash@pliis.com",
     "user_level_id": 1,
     "created_at": "2023-04-02T05:56:41.000Z"
   }

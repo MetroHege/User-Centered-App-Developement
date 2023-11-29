@@ -6,13 +6,13 @@ import { promisePool } from "../utils/database.mjs";
  * @param {object} userCreds - contains username and password properties
  * @returns
  */
-const login = async (userCreds) => {
+const login = async (username) => {
   try {
-    const sql =
-      "SELECT user_id, username, email, user_level_id FROM users WHERE username = ? AND password = ?";
-    const params = [userCreds.username, userCreds.password];
+    const sql = "SELECT * FROM users WHERE username = ?";
+    const params = [username];
     const result = await promisePool.query(sql, params);
     const [rows] = result;
+    console.log("login, user found?", rows[0]);
     return rows[0];
   } catch (e) {
     console.error("error", e.message);
