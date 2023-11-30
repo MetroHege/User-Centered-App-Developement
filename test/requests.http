@@ -18,7 +18,7 @@ GET http://127.0.0.1:3000/
 GET http://127.0.0.1:3000/api/media
 
 ### GET /media/:id
-GET http://127.0.0.1:3000/api/media/8
+GET http://127.0.0.1:3000/api/media/1
 
 ### POST /media
 POST http://127.0.0.1:3000/api/media
@@ -72,7 +72,7 @@ GET http://127.0.0.1:3000/
 GET http://127.0.0.1:3000/api/user
 
 ### GET /users/:id
-GET http://127.0.0.1:3000/api/user/6
+GET http://127.0.0.1:3000/api/user/9
 
 ### POST /user
 POST http://127.0.0.1:3000/api/user

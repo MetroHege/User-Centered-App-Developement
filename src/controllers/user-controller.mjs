@@ -77,15 +77,6 @@ const putUser = async (req, res) => {
     return res.status(400).json({ message: "Validation failed" });
   }
   const result = await updateUserById(req.params.id, req.body);
-  // if (result) {
-  //   if (result.error) {
-  //     res.status(500);
-  //   }
-  //   res.json(result);
-  // } else {
-  //   res.sendStatus(404);
-  //   res.json({ error: "User not found.", user_id: req.params.id });
-  // }
 };
 
 /**
